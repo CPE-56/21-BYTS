@@ -1,49 +1,26 @@
-# Electron build outputs
-/dist
-/build
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Dependency directories
+# Node modules
 node_modules/
 
-# Environment variables
-.env
+# Builds
+dist/
+build/
+temp/
+*.log
 
-# MacOS files
+# System
 .DS_Store
 
-# Windows files
-Thumbs.db
-ehthumbs.db
-desktop.ini
+# Environnement local
+.env
+.env.local
+.env.*.local
 
-# Linux files
-*~
-
-# IDE/editor directories and files
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
-
-# Coverage reports
+# Test coverage
 coverage/
 
-# Temporary files
-tmp/
-temp/
+# Electron build
+out/
 
-# Runtime data
-pids
-*.pid
-*.seed
-
-# Miscellaneous
-.cache/
-*.swp
+# IDE
+.vscode/
+.idea/
