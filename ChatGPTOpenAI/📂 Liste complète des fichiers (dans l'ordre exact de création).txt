@@ -1,0 +1,258 @@
+﻿📂 Liste complète des fichiers (dans l'ordre exact de création)
+🟢 Phase Initiale – Setup technique
+1. package.json
+
+2. .gitignore
+
+3. .eslintrc.json
+
+4. .prettierrc
+
+5. .env
+
+6. vite.config.js
+
+7. main.js (Electron)
+
+8. renderer.js (Electron frontend)
+
+9. App.jsx (React frontend)
+
+10. Structure initiale des dossiers :
+
+plaintext
+CopierModifier
+src/
+├── adapters/
+│   ├── binaries/
+│   └── platforms/
+├── services/
+├── storage/
+├── presentation/
+│   └── components/
+├── constants/
+├── utils/
+├── plugins/
+tests/
+
+
+________________
+
+
+🟢 Phase 1 – Gestion événementielle centrale
+   11. event-types.js
+
+   12. event-bus.js
+
+   13. event-logger.js
+
+   14. event-type-validator.js
+
+   15. error-codes.js
+
+   16. error-handler.js
+
+________________
+
+
+🟢 Phase 2 – Authentification OAuth (PKCE)
+      17. pkce-utils.js
+
+      18. secure-token-store.js
+
+      19. auth-manager.core.js
+
+      20. auth-manager.js (wrapper léger Electron)
+
+________________
+
+
+🟢 Phase 3 – Gestion des téléchargements
+         21. file-operations.js
+
+         22. download-manager.core.js
+
+         23. download-manager.js (wrapper léger Electron)
+
+________________
+
+
+🟢 Phase 4 – Gestion des configurations
+            24. config-manager.js
+
+________________
+
+
+🟢 Phase 5 – Conversion audio générique
+               25. ffmpeg-wrapper.js
+
+               26. format-converter.core.js
+
+________________
+
+
+🟢 Phase 6 – Services spécifiques aux plateformes
+Chaque service expose :
+js
+CopierModifier
+export async function fetchAudioMetadata(url) { /* logique spécifique */ }
+export async function downloadAudio(metadata, options) { /* logique spécifique */ }
+
+
+                  27. youtube-service.js
+
+                  28. tidal-service.js
+
+                  29. spotify-service.js
+
+                  30. soundcloud-service.js
+
+                  31. bandcamp-service.js
+
+________________
+
+
+🟢 Phase 7 – Stockage local (Optionnel mais recommandé)
+                     32. history-manager.js
+
+                     33. preferences-manager.js
+
+________________
+
+
+🟢 Phase 8 – Interface utilisateur (React/Vite)
+                        34. PlatformSelector.jsx
+
+                        35. FormatSelector.jsx
+
+                        36. UrlInput.jsx
+
+                        37. DownloadItem.jsx
+
+                        38. DownloadList.jsx
+
+                        39. SettingsModal.jsx
+
+________________
+
+
+🟢 Phase 9 – Orchestration globale
+                           40. orchestrator.js
+
+________________
+
+
+🟢 Phase 10 – Tests unitaires et d'intégration
+Fichiers de tests associés à chaque module :
+                              * event-bus.test.js
+
+                              * secure-token-store.test.js
+
+                              * auth-manager.core.test.js
+
+                              * download-manager.core.test.js
+
+                              * file-operations.test.js
+
+                              * config-manager.test.js
+
+                              * format-converter.core.test.js
+
+                              * youtube-service.test.js
+
+                              * tidal-service.test.js
+
+                              * spotify-service.test.js
+
+                              * soundcloud-service.test.js
+
+                              * bandcamp-service.test.js
+
+                              * orchestrator.test.js
+
+                              * Tests composants React (PlatformSelector.test.jsx, etc.)
+
+________________
+
+
+🟢 Phase 11 – Packaging & Déploiement final
+                                 41. electron-builder.yml
+
+                                 42. setup.sh
+
+                                 43. README.md (incluant le disclaimer légal)
+
+________________
+
+
+🗂️ Récapitulatif visuel final de ta structure finale :
+plaintext
+CopierModifier
+21-byts/
+├── src/
+│   ├── adapters/
+│   │   ├── binaries/
+│   │   │   └── ffmpeg-wrapper.js
+│   │   │   └── yt-dlp-wrapper.js
+│   │   └── platforms/
+│   │       ├── youtube-service.js
+│   │       ├── tidal-service.js
+│   │       ├── spotify-service.js
+│   │       ├── soundcloud-service.js
+│   │       └── bandcamp-service.js
+│   │
+│   ├── services/
+│   │   ├── auth-manager.core.js
+│   │   ├── auth-manager.js
+│   │   ├── download-manager.core.js
+│   │   ├── download-manager.js
+│   │   ├── format-converter.core.js
+│   │   ├── config-manager.js
+│   │   └── orchestrator.js
+│   │
+│   ├── storage/
+│   │   ├── secure-token-store.js
+│   │   ├── preferences-manager.js
+│   │   ├── history-manager.js
+│   │   └── file-operations.js
+│   │
+│   ├── presentation/
+│   │   ├── components/
+│   │   │   ├── PlatformSelector.jsx
+│   │   │   ├── FormatSelector.jsx
+│   │   │   ├── UrlInput.jsx
+│   │   │   ├── DownloadItem.jsx
+│   │   │   ├── DownloadList.jsx
+│   │   │   └── SettingsModal.jsx
+│   │   ├── App.jsx
+│   │   └── renderer.js
+│   │
+│   ├── constants/
+│   │   ├── event-types.js
+│   │   ├── error-codes.js
+│   │   └── formats.js (optionnel)
+│   │
+│   ├── utils/
+│   │   ├── event-bus.js
+│   │   ├── event-logger.js
+│   │   ├── event-type-validator.js
+│   │   ├── error-handler.js
+│   │   └── pkce-utils.js
+│   │
+│   ├── plugins/
+│   │   └── example-plugin.js (optionnel)
+│   │
+│   ├── cli.js (optionnel pour debug rapide)
+│   └── main.js
+│
+├── tests/
+│   ├── (tous les fichiers de tests Jest)
+│
+├── electron-builder.yml
+├── setup.sh
+├── package.json
+├── .env
+├── .eslintrc.json
+├── .prettierrc
+├── vite.config.js
+└── README.md
